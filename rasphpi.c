@@ -1,3 +1,13 @@
+/**
+* main file to access the register of the RasPi
+* this is based on the work of Pietjan VDM
+* see :
+* http://www.pieter-jan.com/node/15
+* https://github.com/Pieter-Jan/PJ_RPI
+*
+* @author Arno Lambert <arno.lambert@gmail.com>
+*/
+
 #include "bcm2835.h"
 
 struct bcm2835_peripheral gpio = {GPIO_BASE};
