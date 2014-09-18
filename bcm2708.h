@@ -2,7 +2,9 @@
  * header file needed to access the register of the RasPi
  * will be needed by the all the rest
  * this is based on the work of Pietjan VDM
- * see : http://www.pieter-jan.com/node/15
+ * see : 
+ * http://www.pieter-jan.com/node/15
+ * https://github.com/Pieter-Jan/PJ_RPI
  * 
  * @author Arno Lambert <arno.lambert@gmail.com>
  */
