@@ -38,6 +38,11 @@
 #define GPIO_CLR  *(gpio.addr + 10) 
  
 #define GPIO_READ(g)  *(gpio.addr + 13) &= (1<<(g))
+
+//define some functions
+int map_peripheral(struct bcm2835_peripheral *p);
+void unmap_peripheral(struct bcm2835_peripheral *p);
+
 //structure needed to access different sorts of peripherals
 struct bcm2835_peripheral {
     unsigned long addr_p;
