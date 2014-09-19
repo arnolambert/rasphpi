@@ -12,7 +12,7 @@
 
 struct bcm2835_peripheral gpio = {GPIO_BASE};
  
-int main(
+int main()
 {
   if(map_peripheral(&gpio) == -1) 
   {

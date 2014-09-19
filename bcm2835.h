@@ -16,6 +16,7 @@
 #include <sys/stat.h>
  
 #include <unistd.h>
+#include <fcntl.h>    /* For O_RDWR */
 
 //this is where the register for RasPi begins
 #define BCM2708_PERI_BASE       0x20000000
@@ -39,10 +40,6 @@
  
 #define GPIO_READ(g)  *(gpio.addr + 13) &= (1<<(g))
 
-//define some functions
-int map_peripheral(struct bcm2835_peripheral *p);
-void unmap_peripheral(struct bcm2835_peripheral *p);
-
 //structure needed to access different sorts of peripherals
 struct bcm2835_peripheral {
     unsigned long addr_p;
@@ -50,9 +47,8 @@ struct bcm2835_peripheral {
     void *map;
     volatile unsigned int *addr;
 };
- 
-//I think this is not correct, should not be in header....
-struct bcm2835_peripheral gpio = {GPIO_BASE};
 
-//no idea what exactly this does....
-extern struct bcm2835_peripheral gpio;  // They have to be found somewhere, but can't be in the header
+//define some functions
+int map_peripheral(struct bcm2835_peripheral *p);
+void unmap_peripheral(struct bcm2835_peripheral *p);
+
