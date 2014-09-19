@@ -11,6 +11,27 @@
 #include "bcm2835.h"
 
 struct bcm2835_peripheral gpio = {GPIO_BASE};
+
+zend_module_entry rasphpi_module_entry = {
+#if ZEND_MODULE_API_NO >= 20010901
+    STANDARD_MODULE_HEADER,
+#endif
+    PHP_RASPHPI_EXTNAME,
+    NULL, // functions
+    NULL, // MINIT
+    NULL, // MSHUTDOWN
+    NULL, // RINIT
+    NULL, // RSHUTDOWN
+    NULL, // MINFO
+#if ZEND_MODULE_API_NO >= 20010901
+    PHP_RASPHPI_EXTVER,
+#endif
+    STANDARD_MODULE_HEADER
+}
+
+#ifdef COMPILE_DL_RASPHPI
+ZEND_GET_MODULE(rasphpi)
+#endif
  
 int main()
 {
@@ -68,3 +89,6 @@ void unmap_peripheral(struct bcm2835_peripheral *p) {
     munmap(p->map, BLOCK_SIZE);
     close(p->mem_fd);
 }
+
+
+
