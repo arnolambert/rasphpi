@@ -8,7 +8,7 @@
 * @author Arno Lambert <arno.lambert@gmail.com>
 */
 
-#include "bcm2835.h"
+#include "rasphpi.h"
 
 struct bcm2835_peripheral gpio = {GPIO_BASE};
 
