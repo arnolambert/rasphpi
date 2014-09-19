@@ -65,3 +65,30 @@ struct bcm2835_peripheral {
 int map_peripheral(struct bcm2835_peripheral *p);
 void unmap_peripheral(struct bcm2835_peripheral *p);
 
+/*
+ * some header settings to make this a PHP extension
+ * this is taken from the book 'Extending and Embedding PHP' by Sara Golemon
+ */
+
+//prevent double inclusion
+#ifndef PHP_SAMPLE_H
+#define PHP_SAMPLE_H
+
+//define extension properties
+#define PHP_RASPHPI_EXTNAME "rasphpi"
+#define PHP_RASPHPI_EXTVER "0.1"
+
+//import some configure options if any
+//can be handy to build this outside the php source tree
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
+//php standard header
+#include "php.h"
+
+//entry point Zend will use when loading this extension
+extern zend_module_entry rasphpi_module_entry;
+#define phpext_rasphpi_ptr &raspphpi_module_entry
+
+#endif //PHP_SAMPLE_H
