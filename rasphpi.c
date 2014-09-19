@@ -56,6 +56,23 @@ int main()
     return(0); 
 }
 
+/*
+ * my first php function
+ * will be replaced by the ones needed for the Raspberry
+ */
+static PHP_FUNCTION(rasphpi_hello)
+{
+    php_printf("hello raspberry\n");
+}
+
+static zend_function_entry php_rasphpi_functions[] = {
+    PHP_FE(rasphpi_hello, NULL) {
+        NULL,
+        NULL,
+        NULL
+    }
+}
+
 // Exposes the physical address defined in the passed structure using mmap on /dev/mem
 int map_peripheral(struct bcm2835_peripheral *p)
 {
