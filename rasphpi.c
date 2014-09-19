@@ -14,10 +14,9 @@ struct bcm2835_peripheral gpio = {GPIO_BASE};
  
 int main()
 {
-  if(map_peripheral(&gpio) == -1) 
-  {
-    printf("Failed to map the physical GPIO registers into the virtual memory space.\n");
-    return -1;
+    if(map_peripheral(&gpio) == -1) {
+        printf("Failed to map the physical GPIO registers into the virtual memory space.\n");
+        return(-1);
   }
  
   // Define pin 7 as output
