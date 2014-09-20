@@ -13,9 +13,7 @@
 struct bcm2835_peripheral gpio = {GPIO_BASE};
 
 zend_module_entry rasphpi_module_entry = {
-#if ZEND_MODULE_API_NO >= 20010901
     STANDARD_MODULE_HEADER,
-#endif
     PHP_RASPHPI_EXTNAME,
     NULL, // functions
     NULL, // MINIT
@@ -23,11 +21,9 @@ zend_module_entry rasphpi_module_entry = {
     NULL, // RINIT
     NULL, // RSHUTDOWN
     NULL, // MINFO
-#if ZEND_MODULE_API_NO >= 20010901
     PHP_RASPHPI_EXTVER,
-#endif
-    STANDARD_MODULE_HEADER
-}
+    STANDARD_MODULE_PROPERTIES
+};
 
 #ifdef COMPILE_DL_RASPHPI
 ZEND_GET_MODULE(rasphpi)
@@ -71,7 +67,7 @@ static zend_function_entry php_rasphpi_functions[] = {
         NULL,
         NULL
     }
-}
+};
 
 // Exposes the physical address defined in the passed structure using mmap on /dev/mem
 int map_peripheral(struct bcm2835_peripheral *p)
