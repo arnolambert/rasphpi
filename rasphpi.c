@@ -17,8 +17,13 @@ struct bcm2835_peripheral gpio = {GPIO_BASE};
 ZEND_GET_MODULE(rasphpi)
 #endif
  
-int main()
+void main(void)
 {
+}
+
+int someFunctionToBeDefined()
+{
+        printf("print whatever just to be sure we pass here or not \n");
     if(map_peripheral(&gpio) == -1) {
         printf("Failed to map the physical GPIO registers into the virtual memory space.\n");
         return(-1);
@@ -44,17 +49,25 @@ int main()
  * my first php function
  * will be replaced by the ones needed for the Raspberry
  */
+static PHP_FUNCTION(gpio_on)
+{
+    php_printf("gpio on \n");
+}
+
 static PHP_FUNCTION(rasphpi_hello)
 {
     php_printf("hello raspberry\n");
 }
+static PHP_FUNCTION(gpio_off)
+{
+    php_printf("gpio off \n");
+}
 
 static zend_function_entry rasphpi_functions[] = {
-    PHP_FE(rasphpi_hello, NULL) {
-        NULL,
-        NULL,
-        NULL
-    }
+    PHP_FE(rasphpi_hello, NULL)
+    PHP_FE(gpio_on, NULL)
+    PHP_FE(gpio_off, NULL)
+	PHP_FE_END
 };
 
 //rasphpi_functions must be declared and defined first
