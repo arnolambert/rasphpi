@@ -60,8 +60,14 @@ static PHP_FUNCTION(rasphpi_hello)
 }
 static PHP_FUNCTION(gpio_off)
 {
-    php_printf("gpio off \n");
+    char returnString[200] = "your gpio is now ";
+    strcat(returnString, " some more");
+    //php_printf("gpio off \n");
+    RETVAL_STRING(returnString, "0");
 }
+
+static PHP_FUNCTION(gpioSetIODirection){}
+static PHP_FUNCTION(gpioGetIODirection){}
 
 static zend_function_entry rasphpi_functions[] = {
     PHP_FE(rasphpi_hello, NULL)
