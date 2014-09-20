@@ -12,18 +12,6 @@
 
 struct bcm2835_peripheral gpio = {GPIO_BASE};
 
-zend_module_entry rasphpi_module_entry = {
-    STANDARD_MODULE_HEADER,
-    PHP_RASPHPI_EXTNAME,
-    NULL, // functions
-    NULL, // MINIT
-    NULL, // MSHUTDOWN
-    NULL, // RINIT
-    NULL, // RSHUTDOWN
-    NULL, // MINFO
-    PHP_RASPHPI_EXTVER,
-    STANDARD_MODULE_PROPERTIES
-};
 
 #ifdef COMPILE_DL_RASPHPI
 ZEND_GET_MODULE(rasphpi)
@@ -61,12 +49,27 @@ static PHP_FUNCTION(rasphpi_hello)
     php_printf("hello raspberry\n");
 }
 
-static zend_function_entry php_rasphpi_functions[] = {
+static zend_function_entry rasphpi_functions[] = {
     PHP_FE(rasphpi_hello, NULL) {
         NULL,
         NULL,
         NULL
     }
+};
+
+//rasphpi_functions must be declared and defined first
+//else you cannot use it here
+zend_module_entry rasphpi_module_entry = {
+    STANDARD_MODULE_HEADER,
+    PHP_RASPHPI_EXTNAME,
+    rasphpi_functions, // functions
+    NULL, // MINIT
+    NULL, // MSHUTDOWN
+    NULL, // RINIT
+    NULL, // RSHUTDOWN
+    NULL, // MINFO
+    PHP_RASPHPI_EXTVER,
+    STANDARD_MODULE_PROPERTIES
 };
 
 // Exposes the physical address defined in the passed structure using mmap on /dev/mem
