@@ -61,8 +61,16 @@ static PHP_FUNCTION(rasphpi_hello)
 static PHP_FUNCTION(gpio_off)
 {
     char returnString[200] = "your gpio is now ";
-    strcat(returnString, " some more");
-    //php_printf("gpio off \n");
+    char *input;
+    char *inputt;
+    int inputLen;
+    int inputtLen;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "ss", &input, &inputLen, &inputt, &inputtLen) == FAILURE) {
+    }
+    strcat(returnString, input);
+    strcat(returnString, " :::: ");
+    strcat(returnString, inputt);
     RETVAL_STRING(returnString, "0");
 }
 
