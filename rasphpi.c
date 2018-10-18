@@ -19,6 +19,7 @@ ZEND_GET_MODULE(rasphpi)
  
 void main(void)
 {
+
 }
 
 int someFunctionToBeDefined()
